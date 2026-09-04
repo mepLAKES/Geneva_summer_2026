@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A sudden CHL bloom in Lake Geneva</title>
+</head>
+<body>
+  <p>Loading dashboard...</p>
+  <script>
+    fetch("geneva_lake_dashboard.md")
+      .then((response) => {
+        if (!response.ok) throw new Error(`Dashboard load failed: ${response.status}`);
+        return response.text();
+      })
+      .then((dashboardHtml) => {
+        document.open();
+        document.write(dashboardHtml);
+        document.close();
+      })
+      .catch((error) => {
+        document.body.textContent = error.message;
+      });
+  </script>
+</body>
+</html>
